@@ -1,0 +1,26 @@
+
+{% extends "base.html" %}
+
+
+
+    {%block titre %}Liste des spéctacles{% endblock titre %}
+
+    {%block content%}
+
+        <container class=".col-sm-8">
+            <table>
+
+                {% for spectacle in spectacles %}
+                    <tr>
+                        <td>
+                            <a href="#">{{spectacle.title}}</a>
+                        </td>
+                    </tr>
+
+                {%endfor%}
+
+            </table>
+
+        </container>
+
+     {% endblock content %}
