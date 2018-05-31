@@ -10,6 +10,8 @@ class ArtisteType(models.Model):
         db_table = 'artiste_type'
 
 
+
+
 class ArtisteTypeShow(models.Model):
     show = models.ForeignKey('Shows', models.DO_NOTHING)
     artiste_type = models.ForeignKey(ArtisteType, models.DO_NOTHING)
@@ -17,6 +19,7 @@ class ArtisteTypeShow(models.Model):
     class Meta:
         managed = False
         db_table = 'artiste_type_show'
+        verbose_name_plural = 'Artiste Type de Spéctacles'
 
 
 class Artists(models.Model):
@@ -26,6 +29,10 @@ class Artists(models.Model):
     class Meta:
         managed = False
         db_table = 'artists'
+        verbose_name_plural= 'Artistes'
+        verbose_name = 'Artiste'
+    def __str__(self):
+        return self.lastname +' - '+self.firstname
 
 
 class Localities(models.Model):
@@ -35,6 +42,10 @@ class Localities(models.Model):
     class Meta:
         managed = False
         db_table = 'localities'
+        verbose_name_plural = 'Localités'
+        verbose_name = 'Localité'
+    def __str__(self):
+        return self.postal_code +' - '+ self.locality
 
 
 class Locations(models.Model):
@@ -48,6 +59,10 @@ class Locations(models.Model):
     class Meta:
         managed = False
         db_table = 'locations'
+        verbose_name_plural= 'Emplacements'
+        verbose_name = 'Emplacement'
+    def __str__(self):
+        return self.designation
 
 
 class Representations(models.Model):
@@ -58,6 +73,8 @@ class Representations(models.Model):
     class Meta:
         managed = False
         db_table = 'representations'
+        verbose_name_plural = 'Representations'
+        verbose_name = 'Representation'
 
 
 class Shows(models.Model):
@@ -70,6 +87,10 @@ class Shows(models.Model):
     class Meta:
         managed = False
         db_table = 'shows'
+        verbose_name_plural = 'Spéctacles'
+        verbose_name = 'Spéctacle'
+    def __str__(self):
+        return self.title
 
 
 class Types(models.Model):
@@ -78,6 +99,9 @@ class Types(models.Model):
     class Meta:
         managed = False
         db_table = 'types'
-
+        verbose_name_plural = 'Types'
+        verbose_name = 'Type'
+    def __str__(self):
+        return self.type
 
 # Create your models here.

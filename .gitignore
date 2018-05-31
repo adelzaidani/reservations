@@ -1,0 +1,17 @@
+ Le volume dans le lecteur C s'appelle Acer
+ Le num‚ro de s‚rie du volume est 263B-1467
+
+ R‚pertoire de C:\Users\momo\Desktop\2017-2018\pid\reservation_spectacle
+
+17-05-18  18:14    <DIR>          .
+17-05-18  18:14    <DIR>          ..
+17-05-18  18:14                 0 .gitignore
+17-05-18  18:10    <DIR>          .idea
+29-04-18  16:21                 0 db.sqlite3
+29-04-18  16:20               568 manage.py
+29-04-18  17:04               475 models.py
+17-05-18  15:21    <DIR>          reservations
+17-05-18  13:26    <DIR>          reservation_spectacle
+17-05-18  13:28    <DIR>          templates
+               4 fichier(s)            1.043 octets
+               6 R‚p(s)  601.837.662.208 octets libres

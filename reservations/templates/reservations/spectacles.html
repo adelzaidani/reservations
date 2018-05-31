@@ -13,10 +13,9 @@
                 {% for spectacle in spectacles %}
                     <tr>
                         <td>
-                            <a href="#">{{spectacle.title}}</a>
+                            <a href="{% url 'reservations:detail' spectacle.id %}">{{spectacle.title}}</a>
                         </td>
                     </tr>
-
                 {%endfor%}
 
             </table>

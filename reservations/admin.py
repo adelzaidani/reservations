@@ -3,11 +3,10 @@ from . models import ArtisteType, Artists, Shows, Localities, Locations, Artiste
 
 
 # Register your models here.
-admin.site.register(ArtisteType),
+
 admin.site.register(Artists),
 admin.site.register(Shows),
 admin.site.register(Localities),
 admin.site.register(Locations),
-admin.site.register(ArtisteTypeShow),
 admin.site.register(Representations),
 admin.site.register(Types)

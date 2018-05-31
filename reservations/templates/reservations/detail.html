@@ -1,0 +1,69 @@
+
+{% extends "base.html" %}
+{% load static %}
+
+
+    {%block titre %}Détail du spectacle{% endblock titre %}
+
+    {%block content%}
+        <style>
+          #map {
+            width: 100%;
+            height: 400px;
+            background-color: grey;
+      }
+        </style>
+
+        <container class=".col-sm-8">
+            <h2>{{spectacle.title}}</h2>
+            <img class="img-responsive" src="{{spectacle.poster_url}}" alt="{{spectacle.title}}" width="260" height="245">
+            <h4>Adresse:</h4>
+            <p>{{spectacle.location}}</p>
+            <p>{{spectacle.location.address}}</p>
+            <p>{{spectacle.location.locality}}</p>
+
+        </container>
+        <div id="map" width="100%" height="400px"></div>
+        <script type="text/javascript">
+             window.onload= function(){
+              var URL="https://maps.googleapis.com/maps/api/geocode/json?"+
+                "address=1600+Amphitheatre+Parkway,+Mountain+View,+CA&key=AIzaSyB0ElSzct_-xHvmv_EGhCxR_IrYCuOXyfc";
+
+            $.ajax({
+                dataType:"json",
+                url:URL,
+                success:success
+            });
+
+            function success(valeur){
+                result=valeur.results.geometry['lng'];
+                $('#result').html(result);
+            }
+
+    }
+
+
+</script>
+
+        </script>
+        <div id="result"></div>
+        <script>
+          function initMap() {
+            var uluru = {lat: -25.363, lng: 131.044};
+            var map = new google.maps.Map(document.getElementById('map'), {
+              zoom: 4,
+              center: uluru
+            });
+            var marker = new google.maps.Marker({
+              position: uluru,
+              map: map
+            });
+          }
+
+        </script>
+
+
+
+
+
+     {% endblock content %}

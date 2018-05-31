@@ -1,0 +1,46 @@
+{% extends 'base.html' %}
+
+{% block content %}
+{% load static %}
+
+
+
+<script type="text/javascript">
+   $(document).ready(function(){
+     $("#recherche").click(function(){
+        var URL="http://localhost:8000/api/spectacles";
+        $.ajax({
+            dataType:"json",
+            url:URL,
+            success:success
+        });
+        function success(e){
+            var result ="";
+            $.each(e,function(index,value)
+            { result+="<h2>"+value.title+"</h2>";
+              result+="<p>"+ value.description + "</p>";
+              result+="<p>--------------------------</p>";
+            });
+            $('#result').html(result);
+        };
+
+     });
+
+
+});
+
+</script>
+
+
+
+
+
+
+    <div id="container">
+        <h1>Liste des spéctacle du théatre de Paris</h1>
+         <div id="result"></div>
+    </div>
+    <button id="recherche">Recherche</button>
+
+{% endblock content %}
+

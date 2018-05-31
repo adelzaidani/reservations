@@ -1,0 +1,12 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<h1>Connexion</h1>
+    <form class="site-form" action="{% url 'utilisateur:connexion' %}" method="post">
+        {%csrf_token%}
+        {{form}}
+        <input type="submit" value="connexion">
+    </form>
+
+
+{% endblock content %}

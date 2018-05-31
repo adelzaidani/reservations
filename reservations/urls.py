@@ -6,4 +6,5 @@ app_name='reservations'
 
 urlpatterns = [
     path('',views.spectacles, name='liste_spectacles'),
+    path('detail/<int:id_spectacle>/',views.detail, name='detail'),
 ]

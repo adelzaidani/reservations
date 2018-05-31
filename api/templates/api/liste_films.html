@@ -1,0 +1,10 @@
+{%extends "base.html"%}
+
+{%block titre %}Liste des spectacles d'une API{% endblock titre %}
+
+{%block content%}
+    {% for spectacle in spectacles %}
+        <li> {{spectacle}}</li>
+    {%endfor%}
+
+{%endblock content%}

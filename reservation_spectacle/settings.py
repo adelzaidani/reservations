@@ -38,6 +38,11 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'reservations',
+    'api',
+    'rest_framework',
+    'rest_framework_swagger',
+    'utilisateur',
+    'jquery',
 ]
 
 MIDDLEWARE = [
@@ -104,6 +109,7 @@ AUTH_PASSWORD_VALIDATORS = [
         'NAME': 'django.contrib.auth.password_validation.NumericPasswordValidator',
     },
 ]
+
 
 
 # Internationalization

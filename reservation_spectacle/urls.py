@@ -18,8 +18,11 @@ from django.urls import path, include
 from reservations import views
 
 
+
 urlpatterns = [
-    path('',views.index, name= 'index'),
+    path('',views.index, name='index'),
     path('admin/', admin.site.urls),
     path('spectacles/',include('reservations.urls')),
+    path('api/',include('api.urls')),
+    path('utilisateur/',include('utilisateur.urls')),
 ]
