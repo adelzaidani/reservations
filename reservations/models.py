@@ -61,6 +61,7 @@ class Locations(models.Model):
         db_table = 'locations'
         verbose_name_plural= 'Emplacements'
         verbose_name = 'Emplacement'
+
     def __str__(self):
         return self.designation
 
@@ -69,6 +70,9 @@ class Representations(models.Model):
     show = models.ForeignKey('Shows', models.DO_NOTHING)
     when = models.DateTimeField()
     location = models.ForeignKey(Locations, models.DO_NOTHING, blank=True, null=True)
+
+    def __str__(self):
+        return self.show.__str__() + '-'+ self.when.__str__() + '-'+ self.location.__str__()
 
     class Meta:
         managed = False

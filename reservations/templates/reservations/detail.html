@@ -24,43 +24,43 @@
 
         </container>
         <div id="map" width="100%" height="400px"></div>
-        <script type="text/javascript">
-             window.onload= function(){
-              var URL="https://maps.googleapis.com/maps/api/geocode/json?"+
-                "address=1600+Amphitheatre+Parkway,+Mountain+View,+CA&key=AIzaSyB0ElSzct_-xHvmv_EGhCxR_IrYCuOXyfc";
+<script type="text/javascript">
 
-            $.ajax({
-                dataType:"json",
-                url:URL,
-                success:success
-            });
 
-            function success(valeur){
-                result=valeur.results.geometry['lng'];
-                $('#result').html(result);
-            }
+    function initMap() {
+            var URL="https://maps.googleapis.com/maps/api/geocode/json?"+
+                "address={{spectacle.location.locality}}+{{spectacle.location.address}},+CA&key=AIzaSyB0ElSzct_-xHvmv_EGhCxR_IrYCuOXyfc";
+
+                $.ajax({
+                    dataType:"json",
+                    url:URL,
+                    success:success
+                });
+
+                function success(valeur){
+                    LAT=valeur.results[0].geometry.location.lat;
+                    LNG=valeur.results[0].geometry.location.lng;
+                    var uluru = {lat:parseFloat(LAT), lng:parseFloat(LNG)};
+                    var map = new google.maps.Map(document.getElementById('map'), {
+                      zoom: 15,
+                      center: uluru
+                     });
+                var marker = new google.maps.Marker({
+                  position: uluru,
+                  map: map
+                });
+                }
+
 
     }
 
 
 </script>
 
-        </script>
-        <div id="result"></div>
-        <script>
-          function initMap() {
-            var uluru = {lat: -25.363, lng: 131.044};
-            var map = new google.maps.Map(document.getElementById('map'), {
-              zoom: 4,
-              center: uluru
-            });
-            var marker = new google.maps.Marker({
-              position: uluru,
-              map: map
-            });
-          }
 
-        </script>
+        <div id="result"></div>
+
+
 
 
 

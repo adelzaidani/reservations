@@ -1,0 +1,21 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <h1> Inscription d'un nouvel utilisateur étendu</h1>
+    <div class="container col-sm-8">
+
+        <form class="site-form" action="/utilisateur/inscription_test/" method="post">
+        {%csrf_token%}
+        {{formUser}}
+
+        {{formProfil}}
+        <br>
+
+        <input type="submit" value="S'inscrire">
+        </form>
+
+    </div>
+
+
+
+{% endblock content %}
