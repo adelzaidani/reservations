@@ -4,7 +4,7 @@
 <h1>Connexion</h1>
     <form class="site-form" action="{% url 'utilisateur:connexion' %}" method="post">
         {%csrf_token%}
-        {{form}}
+        {{form.as_p}}
         <input type="submit" value="connexion">
     </form>
 

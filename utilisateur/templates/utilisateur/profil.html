@@ -1,0 +1,46 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="container">
+    <h2>Profil de {{profil.user.username}}</h2>
+    <p>Prenom :{{profil.user.first_name}}</p>
+    <p>Nom :{{profil.user.last_name}}</p>
+    <p>Adresse email: {{profil.user.email}}</p>
+    <p>Langue :{{profil.language}}</p>
+    <p>Rôle : {{profil.role}}</p>
+
+    {%if user.is_superuser%}
+    <p>Ce profil est celui de l'administrateur</p>
+    {%endif%}
+
+    <button id="consomme_api">Importer spectacle de Paris</button>
+
+    <h2>Liste des spectacles du théatre de paris </h2>
+
+    <div id="resultat_ajax">
+
+    </div>
+    <script>
+        $('#consomme_api').on('click',function () {
+        $.ajax({
+            url: "https://opendata.paris.fr/api/records/1.0/search/?dataset=evenements-a-paris&q=th%C3%A9%C3%A2tre&facet=tags&facet=placename&facet=department&facet=region&facet=city&facet=date_start&facet=date_end&facet=pricing_info&facet=updated_at&refine.tags=Th%C3%A9%C3%A2tre",
+            type:'GET',
+            dataType: "JSON",
+            success: success
+        });
+        function success(data)
+        { var result = "";
+            $(data.records).each(function(index,value){
+                  title=value.fields.title;
+
+            });
+            $("#resultat_ajax").html(result);
+
+        }
+    });
+
+
+    </script>
+
+</div>
+{% endblock content %}

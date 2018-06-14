@@ -14,22 +14,58 @@
       }
         </style>
 
-        <container class=".col-sm-8">
-            <h2>{{spectacle.title}}</h2>
-            <img class="img-responsive" src="{{spectacle.poster_url}}" alt="{{spectacle.title}}" width="260" height="245">
-            <h4>Adresse:</h4>
-            <p>{{spectacle.location}}</p>
-            <p>{{spectacle.location.address}}</p>
-            <p>{{spectacle.location.locality}}</p>
+        <div class="container">
+            <form action="{% url 'reservations:detail' spectacle.id %}" method="post">
+                {% csrf_token %}
+                <div class="col-sm-6">
 
-        </container>
-        <div id="map" width="100%" height="400px"></div>
+                        <h2>{{spectacle.title}}</h2>
+                        <img class="img-responsive" src="{{spectacle.poster_url}}" alt="{{spectacle.title}}" width="260" height="245">
+                </div>
+                <div class="col-sm-6">
+
+                        <h2>Adresse:</h2>
+                        <p>{{spectacle.location}}</p>
+                        <p>{{spectacle.location.address}}</p>
+                        <p>{{spectacle.location.locality}}</p>
+                        <h2>Tarifs</h2>
+                            <p>{{spectacle.price}} €</p>
+                        <h2>Places disponibles</h2>
+                            <p>{{spectacle.location.available_places}}</p>
+                        <h2>Réservation</h2>
+                        <div class="form-group">
+                            <label>Nombre de places</label>
+                            <input type="number" class="form-control" id="nombre_place" name="nombre_place" value="1">
+                            <button type="submit" class="btn btn-primary">Réserver</button>
+                         </div>
+                </div>
+
+            </form>
+
+
+            </div>
+
+
+        </div>
+
+        <div class="container">
+            <div class="col-sm-6">
+                <br>
+                <div id="map" width="100%" height="400px">
+
+                </div>
+            </div>
+
+
+        </div>
+
+
 <script type="text/javascript">
 
 
     function initMap() {
             var URL="https://maps.googleapis.com/maps/api/geocode/json?"+
-                "address={{spectacle.location.locality}}+{{spectacle.location.address}},+CA&key=AIzaSyB0ElSzct_-xHvmv_EGhCxR_IrYCuOXyfc";
+                "address={{spectacle.location.locality}}+{{spectacle.location.address}},+CA&key=AIzaSyDWuRBu_QFFux_RXNmj22gHmjNzojzqWMg";
 
                 $.ajax({
                     dataType:"json",

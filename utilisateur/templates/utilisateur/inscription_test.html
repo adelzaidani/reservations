@@ -6,9 +6,9 @@
 
         <form class="site-form" action="/utilisateur/inscription_test/" method="post">
         {%csrf_token%}
-        {{formUser}}
+        {{form.as_p}}
 
-        {{formProfil}}
+
         <br>
 
         <input type="submit" value="S'inscrire">

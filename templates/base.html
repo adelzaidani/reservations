@@ -23,6 +23,10 @@
         <ul class="nav navbar-nav">
           <li class="active"><a href="{%url 'index'%}">Accueil</a></li>
           <li><a href="{%url 'reservations:liste_spectacles'%}">Liste des spectacles</a></li>
+          {%if user.is_authenticated %}
+                <li><a href="{%url 'utilisateur:profil'%}">Profil</a></li>
+                <li><a href="{%url 'utilisateur:edit_profil'%}">Editer Profil</a></li>
+          {%endif%}
         </ul>
         <ul class="nav navbar-nav navbar-right">
           <li><a href="{%url 'utilisateur:inscription'%}"><span class="glyphicon glyphicon-user"></span> S'inscrire</a></li>
@@ -63,7 +67,7 @@
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.0/umd/popper.min.js" integrity="sha384-cs/chFZiN24E4KMATLdqdvsezGxaGsi4hLGOzlXwp5UZB1LY//20VyM2taTB4QvJ" crossorigin="anonymous"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/js/bootstrap.min.js" integrity="sha384-uefMccjFJAIv6A+rW+L4AHf99KvxDjWSu1z9VI8SKNVmz4sk7buKt/6v9KI65qnm" crossorigin="anonymous"></script>
-    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyB0ElSzct_-xHvmv_EGhCxR_IrYCuOXyfc&callback=initMap"
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDWuRBu_QFFux_RXNmj22gHmjNzojzqWMg&callback=initMap"
     async defer></script>
     <!-- Footer -->
 
