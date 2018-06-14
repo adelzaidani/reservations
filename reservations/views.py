@@ -1,6 +1,6 @@
 from django.shortcuts import render
 from django.http import Http404
-from .models import Shows,Reservation
+from .models import Shows,Reservation,Category
 from datetime import datetime
 from django.contrib.auth.decorators import login_required
 
@@ -11,6 +11,8 @@ from django.contrib.auth.forms import UserCreationForm
 
 def index(request):
     return render( request,'reservations/index.html')
+
+
 
 def detail(request,id_spectacle):
     try:
@@ -41,8 +43,21 @@ def spectacles(request):
     spectacle_dispo = Shows.objects.filter(bookable=True)
     return render(request,'reservations/spectacles.html',{'spectacle_dispo':spectacle_dispo})
 
+
+
 @login_required(login_url='/utilisateur/connexion/')
 def reservation(request):
     spectacle_dispo=Shows.objects.filter(bookable=True)
     return render(request,'reservations/reservations.html',{'spectacle_dispo':spectacle_dispo})
 
+def categorie(request):
+    categories=Category.objects.all()
+    return render(request,'reservations/categories.html',{'categories':categories})
+
+def spectacle_categu(request,id_categorie):
+    spectacles=Shows.objects.filter(category=id_categorie)
+    return render(request, 'reservations/spectacle_category.html', {'spectacles': spectacles})
+
+def modif_bookable(request,data):
+
+    pass

@@ -93,6 +93,17 @@ class Representations(models.Model):
         verbose_name = 'Representation'
 
 
+class Category(models.Model):
+    titre = models.CharField(max_length=10, unique=True)
+
+    class Meta:
+        verbose_name = 'Categorie'
+        verbose_name_plural = 'Categories'
+
+    def __str__(self):
+        return self.titre
+
+
 class Shows(models.Model):
     slug = models.CharField(unique=True, max_length=60)
     title = models.CharField(max_length=255)
@@ -100,6 +111,7 @@ class Shows(models.Model):
     location = models.ForeignKey(Locations, models.DO_NOTHING)
     bookable = models.BooleanField()
     price=models.FloatField(default=20)
+    category = models.OneToOneField(Category,on_delete=models.CASCADE,default=4)
 
 
     class Meta:
@@ -116,6 +128,8 @@ class Shows(models.Model):
 
     def reservable(self):
         return self.bookable
+
+
 
 class Catalog(models.Model):
     year=models.CharField(unique=True,max_length=30,default='2017/2018')
@@ -146,4 +160,6 @@ class Reservation(models.Model):
     prix_total=models.FloatField()
     spectacle=models.ForeignKey(Shows,on_delete=models.CASCADE)
     location=models.ForeignKey(Locations,on_delete=models.CASCADE)
-# Create your models here.
+
+
+

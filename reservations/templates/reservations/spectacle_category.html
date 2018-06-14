@@ -1,0 +1,37 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+{%block title%}<h1>Liste des spectacles par catégorie</h1>{%endblock title%}
+    {% for spectacle in spectacles %}
+        <p>-----------------------------------</p>
+        <p>{{spectacle.title}}</p>
+        <p>{{spectacle.location}}</p>
+        <p>{{spectacle.location.address}}</p>
+        <p>{{spectacle.location.locality}}</p>
+        <p> Prix :{{spectacle.price}} €</p>
+        Bookable: {{spectacle.bookable}}
+        <button id="bookable">Changer statut réservation</button>
+        <p> Categorie : {{spectacle.category.titre}}</p>
+        <p>-----------------------------------</p>
+
+    {% endfor%}
+
+<script>
+$(document).ready(function(){
+    $("#bookable").dblclick(function(){
+        $.ajax({
+            url: "localhost:8000/spectacles/modif_bookable",
+            type:'POST',
+            dataType: "JSON",
+            success: success
+        });
+
+
+
+    });
+});
+</script>
+
+
+{% endblock content %}
